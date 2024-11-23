@@ -20,15 +20,17 @@ public class AutomationPracticeFormTest {
     void succesfullFormFill(){
         open("/automation-practice-form");
 
-        //Form input
+        //block ads
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
+        // Form input
+
+        //Personal data
         $("#userForm #firstName").setValue("John");
         $("#userForm #lastName").setValue("Doe");
         $("#userForm #userEmail").setValue("anonymous@anonymous.com");
-
-        //$("#userForm #gender-radio-3").click(); //Cannot change invisible element?
         $("#userForm [for=gender-radio-3]").click();
-
         $("#userForm #userNumber").setValue("1234567890");
 
         //Calendar
@@ -37,30 +39,27 @@ public class AutomationPracticeFormTest {
         $(".react-datepicker__year-select").selectOptionByValue("1900");
         $(".react-datepicker__day.react-datepicker__day--001").click();
 
-        //subjects - validation of multiple choise
+        //subjects string
         $("#userForm #subjectsInput").setValue("Maths");
         $("#userForm .subjects-auto-complete__menu").click();
         $("#userForm #subjectsInput").setValue("Arts");
         $("#userForm .subjects-auto-complete__menu").click();
 
-        //Checkbox
-        //$("#userForm #hobbies-checkbox-1").setSelected(true);  //Cannot change invisible element?
+        //subjects checkbox
         $("#userForm [for=hobbies-checkbox-1]").click();
         $("#userForm [for=hobbies-checkbox-3]").click();
 
         //File upload
-        $("#uploadPicture").uploadFile(new File("src/test/data/image.jpg"));
+        $("#uploadPicture").uploadFile(new File("src/test/resources/image.jpg"));
 
         //Address Lists
         $("#userForm #currentAddress").setValue("Random Street, 1138");
-        //enter instead of selection from list - could not find IDs
         $("#userForm #react-select-3-input").setValue("NCR").pressEnter();
         $("#userForm #react-select-4-input").setValue("Delhi").pressEnter();
 
+        // Form submit
 
         $("#userForm #submit").click();
-
-        // Validating results
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
