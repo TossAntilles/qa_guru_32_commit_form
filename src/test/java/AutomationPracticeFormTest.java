@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeFormTest {
@@ -30,12 +31,14 @@ public class AutomationPracticeFormTest {
         $("#userForm #firstName").setValue("John");
         $("#userForm #lastName").setValue("Doe");
         $("#userForm #userEmail").setValue("anonymous@anonymous.com");
-        $("#userForm [for=gender-radio-3]").click();
         $("#userForm #userNumber").setValue("1234567890");
+
+        //Gender
+        $("#userForm #genterWrapper").$(byText("Other")).click();
 
         //Calendar
         $("#userForm #dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionByValue("0");
+        $(".react-datepicker__month-select").selectOptionContainingText("January");
         $(".react-datepicker__year-select").selectOptionByValue("1900");
         $(".react-datepicker__day.react-datepicker__day--001").click();
 
@@ -46,8 +49,8 @@ public class AutomationPracticeFormTest {
         $("#userForm .subjects-auto-complete__menu").click();
 
         //subjects checkbox
-        $("#userForm [for=hobbies-checkbox-1]").click();
-        $("#userForm [for=hobbies-checkbox-3]").click();
+        $("#userForm #hobbiesWrapper").$(byText("Sports")).click();
+        $("#userForm #hobbiesWrapper").$(byText("Music")).click();
 
         //File upload
         $("#uploadPicture").uploadFile(new File("src/test/resources/image.jpg"));
