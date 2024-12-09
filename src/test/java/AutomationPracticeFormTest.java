@@ -1,5 +1,3 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -8,19 +6,11 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutomationPracticeFormTest {
-
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+public class AutomationPracticeFormTest extends TestBase {
 
     @Test
     void succesfullFormFill(){
         open("/automation-practice-form");
-
         //block ads
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -76,6 +66,21 @@ public class AutomationPracticeFormTest {
         $(".table").shouldHave(text("Picture")).shouldHave(text("image.jpg"));
         $(".table").shouldHave(text("Address")).shouldHave(text("Random Street, 1138"));
         $(".table").shouldHave(text("State and City")).shouldHave(text("NCR Delhi"));
+
+    }
+
+    @Test
+    void testingCssOrder(){
+        open("/automation-practice-form");
+
+        //block ads
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+        $("div").$("h1").shouldHave((text("Practice Form")));
+        $("div h1").shouldHave((text("Practice Form")));
+        $("h1").shouldHave((text("Practice Form")));
+        $("h1 div").shouldHave((text("Practice Form")));
 
     }
 }
