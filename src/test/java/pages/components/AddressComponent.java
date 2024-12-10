@@ -17,7 +17,7 @@ public class AddressComponent {
     }
 
     public void selectCity(String city){
-        $("#state").click();
+        $("#city").click();
         $("#stateCity-wrapper").$(byText(city)).click();
     }
 }

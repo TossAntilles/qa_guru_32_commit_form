@@ -5,6 +5,7 @@ import pages.components.AddressComponent;
 import pages.components.CalendarComponent;
 import pages.components.FileUploadComponent;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -12,15 +13,16 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private static SelenideElement firstNameInput = $("#userForm #first_name"),
-            lastNameInput = $("#userForm #last_name"),
-            emailInput = $("#userForm #userEmail"),
-            genderInput = $("#userForm #genterWrapper"),
-            phoneInput = $("#userForm #userNumber"),
-            dateOfBirthInput = $("userForm #dateOfBirthInput"),
+    private static SelenideElement firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            emailInput = $("#userEmail"),
+            genderInput = $("#genterWrapper"),
+            phoneInput = $("#userNumber"),
+            dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
+            subjectsDropdown = $(".subjects-auto-complete__menu"),
             hobbyCheckbox = $("#hobbiesWrapper"),
-            submitButton = $("#userForm #submit"),
+            submitButton = $("#submit"),
             resultsHeader = $(".modal-title"), // хэдер таблицы
             resultsTable = $(".table-responsive"); // сама таблица результатов
 
@@ -32,7 +34,9 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('#RightSide_Advertisement').remove()");
         executeJavaScript("$('footer').remove()");
+
 
         return this;
     }
@@ -78,6 +82,7 @@ public class RegistrationPage {
 
     public RegistrationPage selectSubjectsByInput(String subject) {
         subjectsInput.setValue(subject);
+        subjectsDropdown.click();
 
         return this;
     }
@@ -121,7 +126,7 @@ public class RegistrationPage {
     //результаты
 
     //успешный сабмит
-    public RegistrationPage succesfulSubmit(String header) {
+    public RegistrationPage successfulSubmit(String header) {
         resultsHeader.shouldHave(text(header));
 
         return this;
@@ -129,13 +134,10 @@ public class RegistrationPage {
 
     public RegistrationPage checkResultTable(String key, String value) {
         resultsTable.$(byText(key)).sibling(0)
-                .shouldHave(text(value));
+                .shouldHave(exactText(value));
 
         return this;
     }
-
-    //таблица - заголовок
-    //таблица - значения
 
     //не успешный сабмит - ошибки, нет таблицы
 }

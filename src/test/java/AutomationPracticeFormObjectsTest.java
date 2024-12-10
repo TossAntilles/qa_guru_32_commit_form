@@ -6,7 +6,7 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void succesfulFormFill(){
+    void succesfullFullFormFill(){
         registrationPage.openPage()
                 //заполнение формы
                 .setFirstName("John")
@@ -25,18 +25,39 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
                 .selectCity("Delhi")
                 .submit()
                 //результаты
-                .succesfulSubmit("Thanks for submitting the form")
-                .checkResultTable("Student Name", "anonymous@anonymous.com")
-                .checkResultTable("Student Email", "John Doe")
+                .successfulSubmit("Thanks for submitting the form")
+                .checkResultTable("Student Name", "John Doe")
+                .checkResultTable("Student Email", "anonymous@anonymous.com")
                 .checkResultTable("Gender", "Other")
                 .checkResultTable("Mobile", "1234567890")
-                .checkResultTable("Date of Birth", "J01 January,1900")
+                .checkResultTable("Date of Birth", "01 January,1900")
                 .checkResultTable("Subjects", "Maths, Arts")
                 .checkResultTable("Hobbies", "Sports, Music")
                 .checkResultTable("Picture", "image.jpg")
                 .checkResultTable("Address", "Random Street, 1138")
                 .checkResultTable("State and City", "NCR Delhi");
+    }
 
+    @Test
+    void succesfullMinimalFormFill() {
+        registrationPage.openPage()
+                //заполнение формы
+                .setFirstName("John")
+                .setLastName("Doe")
+                .setGender("Other")
+                .setPhone("1234567890")
+                .submit()
+                //результаты, в том числе пустые поля
+                .successfulSubmit("Thanks for submitting the form")
+                .checkResultTable("Student Name", "John Doe")
+                .checkResultTable("Student Email", "")
+                .checkResultTable("Gender", "Other")
+                .checkResultTable("Mobile", "1234567890")
+                .checkResultTable("Subjects", "")
+                .checkResultTable("Hobbies", "")
+                .checkResultTable("Picture", "")
+                .checkResultTable("Address", "")
+                .checkResultTable("State and City", "");
     }
 
 }

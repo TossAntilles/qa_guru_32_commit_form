@@ -1,6 +1,5 @@
 package pages.components;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
@@ -9,6 +8,7 @@ public class CalendarComponent {
 
         $(".react-datepicker__month-select").selectOptionContainingText(month);
         $(".react-datepicker__year-select").selectOptionByValue(year);
-        $(".react-datepicker__month").$(byText(day)).click();
+        $(".react-datepicker__day--0"+day).click();
+
     }
 }
