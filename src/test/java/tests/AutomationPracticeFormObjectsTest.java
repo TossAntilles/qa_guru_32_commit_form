@@ -1,3 +1,5 @@
+package tests;
+
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -63,8 +65,10 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
     @Test
     void requiredFieldsEmpty() {
         registrationPage.openPage()
+                //пустая форма
                 .submit()
                 .unsuccessfulSubmit()
+                //подсветка полей
                 .firstNameEmpty()
                 .lastNameEmpty()
                 .genderNotSelected()

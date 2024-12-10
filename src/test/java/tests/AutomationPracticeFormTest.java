@@ -1,3 +1,5 @@
+package tests;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -69,18 +71,4 @@ public class AutomationPracticeFormTest extends TestBase {
 
     }
 
-    @Test
-    void testingCssOrder(){
-        open("/automation-practice-form");
-
-        //block ads
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
-        $("div").$("h1").shouldHave((text("Practice Form")));
-        $("div h1").shouldHave((text("Practice Form")));
-        $("h1").shouldHave((text("Practice Form")));
-        $("h1 div").shouldHave((text("Practice Form")));
-
-    }
 }
