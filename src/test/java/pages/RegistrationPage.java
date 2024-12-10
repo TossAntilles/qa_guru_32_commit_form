@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.AddressComponent;
 import pages.components.CalendarComponent;
+import pages.components.FieldValidationComponent;
 import pages.components.FileUploadComponent;
 
 import static com.codeborne.selenide.Condition.*;
@@ -29,6 +30,7 @@ public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     FileUploadComponent fileUploadComponent = new FileUploadComponent();
     AddressComponent addressComponent = new AddressComponent();
+    FieldValidationComponent fieldValidationComponent= new FieldValidationComponent();
 
     static String errorIcon = "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e\")";
 
@@ -144,26 +146,18 @@ public class RegistrationPage {
     public RegistrationPage unsuccessfulSubmit() {
         resultsHeader.shouldNotBe(visible);
         resultsTable.shouldNotBe(visible);
+
         return this;
     }
 
     public RegistrationPage firstNameEmpty() {
-        firstNameInput.shouldHave(cssValue("background-image", errorIcon));
-        firstNameInput.shouldHave(cssValue("border-bottom-color", "rgba(220, 53, 69, 1)"));
-        firstNameInput.shouldHave(cssValue("border-left-color", "rgba(220, 53, 69, 1)"));
-        firstNameInput.shouldHave(cssValue("border-right-color", "rgba(220, 53, 69, 1)"));
-        firstNameInput.shouldHave(cssValue("border-top-color", "rgba(220, 53, 69, 1)"));
+        fieldValidationComponent.fieldError(firstNameInput);
 
         return this;
     }
 
     public RegistrationPage lastNameEmpty() {
-        lastNameInput.shouldHave(cssValue("background-image", errorIcon));
-        lastNameInput.shouldHave(cssValue("background-image", errorIcon));
-        lastNameInput.shouldHave(cssValue("border-bottom-color", "rgba(220, 53, 69, 1)"));
-        lastNameInput.shouldHave(cssValue("border-left-color", "rgba(220, 53, 69, 1)"));
-        lastNameInput.shouldHave(cssValue("border-right-color", "rgba(220, 53, 69, 1)"));
-        lastNameInput.shouldHave(cssValue("border-top-color", "rgba(220, 53, 69, 1)"));
+        fieldValidationComponent.fieldError(lastNameInput);
 
         return this;
     }
@@ -175,12 +169,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage phoneEmpty() {
-        phoneInput.shouldHave(cssValue("background-image", errorIcon));
-        phoneInput.shouldHave(cssValue("background-image", errorIcon));
-        phoneInput.shouldHave(cssValue("border-bottom-color", "rgba(220, 53, 69, 1)"));
-        phoneInput.shouldHave(cssValue("border-left-color", "rgba(220, 53, 69, 1)"));
-        phoneInput.shouldHave(cssValue("border-right-color", "rgba(220, 53, 69, 1)"));
-        phoneInput.shouldHave(cssValue("border-top-color", "rgba(220, 53, 69, 1)"));
+        fieldValidationComponent.fieldError(phoneInput);
+
         return this;
     }
 
