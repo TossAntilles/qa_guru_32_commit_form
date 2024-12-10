@@ -60,4 +60,16 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
                 .checkResultTable("State and City", "");
     }
 
+    @Test
+    void requiredFieldsEmpty() {
+        registrationPage.openPage()
+                .submit()
+                .unsuccessfulSubmit()
+                .firstNameEmpty()
+                .lastNameEmpty()
+                .genderNotSelected()
+                .phoneEmpty();
+
+    }
+
 }
