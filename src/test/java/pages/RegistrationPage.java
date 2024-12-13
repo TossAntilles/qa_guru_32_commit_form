@@ -25,7 +25,7 @@ public class RegistrationPage {
             submitButton = $("#submit"),
             resultsHeader = $(".modal-title"), // хэдер таблицы
             resultsTable = $(".table-responsive"); // сама таблица результатов
-
+    private static String pictureUploadButton = "#uploadPicture";
 
     CalendarComponent calendarComponent = new CalendarComponent();
     FileUploadComponent fileUploadComponent = new FileUploadComponent();
@@ -96,8 +96,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage uploadPicture(String picture, String path) {
-        fileUploadComponent.fileUpload(picture, path);
+    public RegistrationPage uploadPicture(String path) {
+        fileUploadComponent.fileUpload(pictureUploadButton, path);
 
         return this;
     }

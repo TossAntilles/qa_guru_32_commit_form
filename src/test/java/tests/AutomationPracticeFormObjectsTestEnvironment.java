@@ -21,7 +21,7 @@ public class AutomationPracticeFormObjectsTestEnvironment extends TestEnvironmen
                 .selectSubjectsByInput("Arts")
                 .selectHobbyByCheckBox("Sports")
                 .selectHobbyByCheckBox("Music")
-                .uploadPicture("#uploadPicture","image.jpg")
+                .uploadPicture("image.jpg")
                 .addressField("Random Street, 1138")
                 .selectState("NCR")
                 .selectCity("Delhi")
