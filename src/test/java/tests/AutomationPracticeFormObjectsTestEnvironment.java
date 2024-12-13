@@ -3,12 +3,12 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-public class AutomationPracticeFormObjectsTest extends TestBase {
+public class AutomationPracticeFormObjectsTestEnvironment extends TestEnvironmentBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void succesfullFullFormFill(){
+    void succesfullFullFormFillTest(){
         registrationPage.openPage()
                 //заполнение формы
                 .setFirstName("John")
@@ -21,7 +21,7 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
                 .selectSubjectsByInput("Arts")
                 .selectHobbyByCheckBox("Sports")
                 .selectHobbyByCheckBox("Music")
-                .uploadPicture("#uploadPicture","src/test/resources/image.jpg")
+                .uploadPicture("#uploadPicture","image.jpg")
                 .addressField("Random Street, 1138")
                 .selectState("NCR")
                 .selectCity("Delhi")
@@ -41,7 +41,7 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
     }
 
     @Test
-    void succesfullMinimalFormFill() {
+    void succesfullMinimalFormFillTest() {
         registrationPage.openPage()
                 //заполнение формы
                 .setFirstName("John")
@@ -63,7 +63,7 @@ public class AutomationPracticeFormObjectsTest extends TestBase {
     }
 
     @Test
-    void requiredFieldsEmpty() {
+    void requiredFieldsEmptyTest() {
         registrationPage.openPage()
                 //пустая форма
                 .submit()

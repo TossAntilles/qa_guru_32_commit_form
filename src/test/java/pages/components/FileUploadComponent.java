@@ -9,8 +9,8 @@ public class FileUploadComponent {
     //Отдельный компонент создан заблаговременно на случай появления других инструментов:
     // работа с файлами: превью, трекер загрузки, etc
 
-    public void fileUpload(String fileSelector, String path){
-        $(fileSelector).uploadFile(new File(path));
+    public void fileUpload(String fileSelector, String file){
+        $(fileSelector).uploadFromClasspath(file);
 
     }
 }

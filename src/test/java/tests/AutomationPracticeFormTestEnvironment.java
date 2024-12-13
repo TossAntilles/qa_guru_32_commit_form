@@ -8,10 +8,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutomationPracticeFormTest extends TestBase {
+public class AutomationPracticeFormTestEnvironment extends TestEnvironmentBase {
 
     @Test
-    void succesfullFormFill(){
+    void succesfullFormFillTest(){
         open("/automation-practice-form");
         //block ads
         executeJavaScript("$('#fixedban').remove()");
