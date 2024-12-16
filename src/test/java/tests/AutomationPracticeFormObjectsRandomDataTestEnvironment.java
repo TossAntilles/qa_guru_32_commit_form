@@ -11,50 +11,71 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Test
 
     @Test
     void succesfullFullFormFillTest(){
+
+        String firstName = randData.firstName(),
+                lastName = randData.lastName(),
+                email = randData.email(),
+                gender = randData.gender(),
+                phone = randData.phone(),
+                day = randData.day(),
+                month = randData.month(),
+                year = randData.year(),
+                subject = randData.subject(),
+                hobby = randData.hobby(),
+                picture = randData.picture(),
+                address = randData.address(),
+                state = randData.state(),
+                cityRes = randData.cityRes(state);
+
         registrationPage.openPage()
                 //заполнение формы
-                .setFirstName(randData.firstName)
-                .setLastName(randData.lastName)
-                .setEmail(randData.email)
-                .setGender(randData.gender)
-                .setPhone(randData.phone)
-                .setDateOfBirth(randData.day, randData.month, randData.year)
-                .selectSubjectsByInput(randData.subject)
-                .selectHobbyByCheckBox(randData.hobby)
-                .uploadPicture(randData.picture)
-                .addressField(randData.address)
-                .selectState(randData.state)
-                .selectCity(randData.cityRes)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setGender(gender)
+                .setPhone(phone)
+                .setDateOfBirth(day, month, year)
+                .selectSubjectsByInput(subject)
+                .selectHobbyByCheckBox(hobby)
+                .uploadPicture(picture)
+                .addressField(address)
+                .selectState(state)
+                .selectCity(cityRes)
                 .submit()
                 //результаты
                 .successfulSubmit("Thanks for submitting the form")
-                .checkResultTable("Student Name", randData.firstName + " " + randData.lastName)
-                .checkResultTable("Student Email", randData.email)
-                .checkResultTable("Gender", randData.gender)
-                .checkResultTable("Mobile", randData.phone)
-                .checkResultTable("Date of Birth", randData.day + " " + randData.month + "," + randData.year)
-                .checkResultTable("Subjects", randData.subject)
-                .checkResultTable("Hobbies", randData.hobby)
-                .checkResultTable("Picture", randData.picture)
-                .checkResultTable("Address", randData.address)
-                .checkResultTable("State and City", randData.state + " " + randData.cityRes);
+                .checkResultTable("Student Name", firstName + " " + lastName)
+                .checkResultTable("Student Email", email)
+                .checkResultTable("Gender", gender)
+                .checkResultTable("Mobile", phone)
+                .checkResultTable("Date of Birth", day + " " + month + "," + year)
+                .checkResultTable("Subjects", subject)
+                .checkResultTable("Hobbies", hobby)
+                .checkResultTable("Picture", picture)
+                .checkResultTable("Address", address)
+                .checkResultTable("State and City", state + " " + cityRes);
     }
 
     @Test
     void succesfullMinimalFormFillTest() {
+        String firstName = randData.firstName();
+        String lastName = randData.lastName();
+        String gender = randData.gender();
+        String phone = randData.phone();
+
         registrationPage.openPage()
                 //заполнение формы
-                .setFirstName(randData.firstName)
-                .setLastName(randData.lastName)
-                .setGender(randData.gender)
-                .setPhone(randData.phone)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setGender(gender)
+                .setPhone(phone)
                 .submit()
                 //результаты, в том числе пустые поля
                 .successfulSubmit("Thanks for submitting the form")
-                .checkResultTable("Student Name", randData.firstName + " " + randData.lastName)
+                .checkResultTable("Student Name", firstName + " " + lastName)
                 .checkResultTable("Student Email", "")
-                .checkResultTable("Gender", randData.gender)
-                .checkResultTable("Mobile", randData.phone)
+                .checkResultTable("Gender", gender)
+                .checkResultTable("Mobile", phone)
                 .checkResultTable("Subjects", "")
                 .checkResultTable("Hobbies", "")
                 .checkResultTable("Picture", "")
