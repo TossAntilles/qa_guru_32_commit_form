@@ -9,23 +9,23 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Test
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageRandomData randData = new RegistrationPageRandomData();
 
+    String firstName = randData.firstName(),
+            lastName = randData.lastName(),
+            email = randData.email(),
+            gender = randData.gender(),
+            phone = randData.phone(),
+            day = randData.day(),
+            month = randData.month(),
+            year = randData.year(),
+            subject = randData.subject(),
+            hobby = randData.hobby(),
+            picture = randData.picture(),
+            address = randData.address(),
+            state = randData.state(),
+            cityRes = randData.cityRes(state);
+
     @Test
     void succesfullFullFormFillTest(){
-
-        String firstName = randData.firstName(),
-                lastName = randData.lastName(),
-                email = randData.email(),
-                gender = randData.gender(),
-                phone = randData.phone(),
-                day = randData.day(),
-                month = randData.month(),
-                year = randData.year(),
-                subject = randData.subject(),
-                hobby = randData.hobby(),
-                picture = randData.picture(),
-                address = randData.address(),
-                state = randData.state(),
-                cityRes = randData.cityRes(state);
 
         registrationPage.openPage()
                 //заполнение формы
@@ -58,10 +58,6 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Test
 
     @Test
     void succesfullMinimalFormFillTest() {
-        String firstName = randData.firstName();
-        String lastName = randData.lastName();
-        String gender = randData.gender();
-        String phone = randData.phone();
 
         registrationPage.openPage()
                 //заполнение формы
