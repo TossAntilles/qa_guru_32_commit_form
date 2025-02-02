@@ -1,10 +1,10 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
-public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends TestEnvironmentBase {
+public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends BeforeAll {
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageRandomData randData = new RegistrationPageRandomData();

@@ -1,9 +1,9 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 
-public class AutomationPracticeFormObjectsTestEnvironment extends TestEnvironmentBase {
+public class AutomationPracticeFormObjectsTestEnvironment extends BeforeAll {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -16,7 +16,7 @@ public class AutomationPracticeFormObjectsTestEnvironment extends TestEnvironmen
                 .setEmail("anonymous@anonymous.com")
                 .setGender("Other")
                 .setPhone("1234567890")
-                .setDateOfBirth("01", "January", "1900")
+                .setDateOfBirth("1", "January", "1900")
                 .selectSubjectsByInput("Math")
                 .selectSubjectsByInput("Arts")
                 .selectHobbyByCheckBox("Sports")
