@@ -1,6 +1,9 @@
 package tests;
 
+import helpers.Attach;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
@@ -8,6 +11,14 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageRandomData randData = new RegistrationPageRandomData();
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+    }
 
     String firstName = randData.firstName(),
             lastName = randData.lastName(),
@@ -25,6 +36,13 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
             cityRes = randData.cityRes(state);
 
     @Test
+    @Feature("Проверка формы")
+    @Issue("Валидация заполнения формы")
+    @Story("Полное заполнение случайными данными")
+    @Owner("Toss Antilles")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Полное заполнение случайными данными.")
     void succesfullFullFormFillTest(){
 
         registrationPage.openPage()
@@ -57,6 +75,13 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     }
 
     @Test
+    @Feature("Проверка формы")
+    @Issue("Валидация заполнения формы")
+    @Story("Заполнение минимальным набором данных")
+    @Owner("Toss Antilles")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Зполнение минимальным набором данных.")
     void succesfullMinimalFormFillTest() {
 
         registrationPage.openPage()
@@ -80,6 +105,13 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     }
 
     @Test
+    @Feature("Проверка формы")
+    @Issue("Валидация заполнения формы")
+    @Story("Сабмит пустой формы")
+    @Owner("Toss Antilles")
+    @Severity(SeverityLevel.NORMAL)
+    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Сабмит пустой формы.")
     void requiredFieldsEmptyTest() {
         registrationPage.openPage()
                 //пустая форма
