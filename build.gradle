@@ -39,13 +39,13 @@ tasks.withType(JavaCompile) {
 task submitTest(type: Test) {
     useJUnitPlatform {
         includeTags("submitTest")
-        systemProperties(System.getProperties())
     }
+    systemProperties(System.getProperties())
 }
 
 task validationTest(type: Test) {
     useJUnitPlatform {
         includeTags("validationTest")
-        systemProperties(System.getProperties())
     }
+    systemProperties(System.getProperties())
 }

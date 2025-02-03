@@ -3,7 +3,6 @@ package tests;
 import helpers.Attach;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
@@ -44,7 +43,7 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Полное заполнение случайными данными.")
-    void succesfullFullFormFillTest(){
+    void successfulFullFormFillTest(){
 
         registrationPage.openPage()
                 //заполнение формы

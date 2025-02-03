@@ -12,12 +12,13 @@ public class AddressComponent {
     }
 
     public void selectState(String state){
+
         $("#state").click();
-        $("#stateCity-wrapper").$(byText(state)).click();
+        $("#stateCity-wrapper").scrollIntoView(true).$(byText(state)).click();
     }
 
     public void selectCity(String city){
         $("#city").click();
-        $("#stateCity-wrapper").$(byText(city)).click();
+        $("#stateCity-wrapper").scrollIntoView(true).$(byText(city)).click();
     }
 }
