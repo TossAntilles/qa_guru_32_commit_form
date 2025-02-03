@@ -36,6 +36,7 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
             cityRes = randData.cityRes(state);
 
     @Test
+    @Tag("submitTest")
     @Feature("Проверка формы")
     @Issue("Валидация заполнения формы")
     @Story("Полное заполнение случайными данными")
@@ -75,6 +76,7 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     }
 
     @Test
+    @Tag("submitTest")
     @Feature("Проверка формы")
     @Issue("Валидация заполнения формы")
     @Story("Заполнение минимальным набором данных")
@@ -105,6 +107,7 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     }
 
     @Test
+    @Tag("validationTest")
     @Feature("Проверка формы")
     @Issue("Валидация заполнения формы")
     @Story("Сабмит пустой формы")

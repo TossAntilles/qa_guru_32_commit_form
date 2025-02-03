@@ -36,7 +36,16 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
+task submitTest(type: Test) {
+    useJUnitPlatform {
+        includeTags("submitTest")
+        systemProperties(System.getProperties())
+    }
+}
+
+task validationTest(type: Test) {
+    useJUnitPlatform {
+        includeTags("validationTest")
+        systemProperties(System.getProperties())
+    }
 }
