@@ -41,6 +41,7 @@ public class RegistrationPage {
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('#RightSide_Advertisement').remove()");
             executeJavaScript("$('footer').remove()");
+            executeJavaScript("$('#google_esf').remove()");
         });
         return this;
     }
