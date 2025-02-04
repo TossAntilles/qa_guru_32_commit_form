@@ -133,9 +133,6 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
         step("Сабмит пустой формы", () -> {
             registrationPage.submit();
         });
-        step("Заполнениее формы", () -> {
-            registrationPage.openPage();
-        });
         step("Проверка отсутствия результатов и валидации полей", () -> {
             registrationPage.unsuccessfulSubmit()
                     .firstNameEmpty()
