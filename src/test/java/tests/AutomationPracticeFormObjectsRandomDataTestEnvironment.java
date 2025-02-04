@@ -6,6 +6,9 @@ import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
+import static io.qameta.allure.Allure.step;
+import static io.qameta.allure.Step.*;
+
 public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends BeforeAll {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -45,33 +48,38 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @DisplayName("Полное заполнение случайными данными.")
     void successfulFullFormFillTest(){
 
-        registrationPage.openPage()
-                //заполнение формы
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setGender(gender)
-                .setPhone(phone)
-                .setDateOfBirth(day, month, year)
-                .selectSubjectsByInput(subject)
-                .selectHobbyByCheckBox(hobby)
-                .uploadPicture(picture)
-                .addressField(address)
-                .selectState(state)
-                .selectCity(cityRes)
-                .submit()
-                //результаты
-                .successfulSubmit("Thanks for submitting the form")
-                .checkResultTable("Student Name", firstName + " " + lastName)
-                .checkResultTable("Student Email", email)
-                .checkResultTable("Gender", gender)
-                .checkResultTable("Mobile", phone)
-                .checkResultTable("Date of Birth", day + " " + month + "," + year)
-                .checkResultTable("Subjects", subject)
-                .checkResultTable("Hobbies", hobby)
-                .checkResultTable("Picture", picture)
-                .checkResultTable("Address", address)
-                .checkResultTable("State and City", state + " " + cityRes);
+        step("Открытие формы", () -> {
+            registrationPage.openPage();
+        });
+        step("Заполнениее формы", () -> {
+            registrationPage.setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setEmail(email)
+                    .setGender(gender)
+                    .setPhone(phone)
+                    .setDateOfBirth(day, month, year)
+                    .selectSubjectsByInput(subject)
+                    .selectHobbyByCheckBox(hobby)
+                    .uploadPicture(picture)
+                    .addressField(address)
+                    .selectState(state)
+                    .selectCity(cityRes)
+                    .submit();
+        });
+        step("Валидация сабмита", () -> {
+            registrationPage.successfulSubmit("Thanks for submitting the form")
+                    .checkResultTable("Student Name", firstName + " " + lastName)
+                    .checkResultTable("Student Email", email)
+                    .checkResultTable("Gender", gender)
+                    .checkResultTable("Mobile", phone)
+                    .checkResultTable("Date of Birth", day + " " + month + "," + year)
+                    .checkResultTable("Subjects", subject)
+                    .checkResultTable("Hobbies", hobby)
+                    .checkResultTable("Picture", picture)
+                    .checkResultTable("Address", address)
+                    .checkResultTable("State and City", state + " " + cityRes);
+        });
+
     }
 
     @Test
@@ -85,24 +93,28 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @DisplayName("Зполнение минимальным набором данных.")
     void succesfullMinimalFormFillTest() {
 
-        registrationPage.openPage()
-                //заполнение формы
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setPhone(phone)
-                .submit()
-                //результаты, в том числе пустые поля
-                .successfulSubmit("Thanks for submitting the form")
-                .checkResultTable("Student Name", firstName + " " + lastName)
-                .checkResultTable("Student Email", "")
-                .checkResultTable("Gender", gender)
-                .checkResultTable("Mobile", phone)
-                .checkResultTable("Subjects", "")
-                .checkResultTable("Hobbies", "")
-                .checkResultTable("Picture", "")
-                .checkResultTable("Address", "")
-                .checkResultTable("State and City", "");
+        step("Открытие формы", () -> {
+            registrationPage.openPage();
+        });
+        step("Заполнениее формы", () -> {
+            registrationPage.setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setGender(gender)
+                    .setPhone(phone)
+                    .submit();
+        });
+        step("Валидация сабмита", () -> {
+            registrationPage.successfulSubmit("Thanks for submitting the form")
+                    .checkResultTable("Student Name", firstName + " " + lastName)
+                    .checkResultTable("Student Email", "")
+                    .checkResultTable("Gender", gender)
+                    .checkResultTable("Mobile", phone)
+                    .checkResultTable("Subjects", "")
+                    .checkResultTable("Hobbies", "")
+                    .checkResultTable("Picture", "")
+                    .checkResultTable("Address", "")
+                    .checkResultTable("State and City", "");
+        });
     }
 
     @Test
@@ -115,16 +127,22 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Сабмит пустой формы.")
     void requiredFieldsEmptyTest() {
-        registrationPage.openPage()
-                //пустая форма
-                .submit()
-                .unsuccessfulSubmit()
-                //подсветка полей
-                .firstNameEmpty()
-                .lastNameEmpty()
-                .genderNotSelected()
-                .phoneEmpty();
-
+        step("Открытие формы", () -> {
+            registrationPage.openPage();
+        });
+        step("Сабмит пустой формы", () -> {
+            registrationPage.submit();
+        });
+        step("Заполнениее формы", () -> {
+            registrationPage.openPage();
+        });
+        step("Проверка отсутствия результатов и валидации полей", () -> {
+            registrationPage.unsuccessfulSubmit()
+                    .firstNameEmpty()
+                    .lastNameEmpty()
+                    .genderNotSelected()
+                    .phoneEmpty();
+        });
     }
 
 }
