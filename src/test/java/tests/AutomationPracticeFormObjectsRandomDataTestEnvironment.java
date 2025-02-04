@@ -43,7 +43,6 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @Story("Полное заполнение случайными данными")
     @Owner("Toss Antilles")
     @Severity(SeverityLevel.NORMAL)
-    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Полное заполнение случайными данными.")
     void successfulFullFormFillTest(){
 
@@ -88,7 +87,6 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @Story("Заполнение минимальным набором данных")
     @Owner("Toss Antilles")
     @Severity(SeverityLevel.NORMAL)
-    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Зполнение минимальным набором данных.")
     void succesfullMinimalFormFillTest() {
 
@@ -123,7 +121,6 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
     @Story("Сабмит пустой формы")
     @Owner("Toss Antilles")
     @Severity(SeverityLevel.NORMAL)
-    @Link(value = "Страница формы", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Сабмит пустой формы.")
     void requiredFieldsEmptyTest() {
         step("Открытие формы", () -> {
