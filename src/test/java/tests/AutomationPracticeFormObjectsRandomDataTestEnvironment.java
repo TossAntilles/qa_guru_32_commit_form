@@ -7,7 +7,6 @@ import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
 import static io.qameta.allure.Allure.step;
-import static io.qameta.allure.Step.*;
 
 public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends BeforeAll {
 
