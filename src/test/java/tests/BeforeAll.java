@@ -16,14 +16,14 @@ public class BeforeAll {
         System.setProperty("baseUrl", "https://demoqa.com");
         System.setProperty("browser", "chrome");
         System.setProperty("browserResolution", "1920x1080");
-        System.setProperty("WebDriverHost", "selenoid.autotests.cloud");
+        System.setProperty("webDriverHost", "selenoid.autotests.cloud");
 
         Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.browserSize = System.getProperty("browserResolution");
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
 
-        Configuration.remote = "https://user1:1234@"+ System.getProperty("WebDriverHost") +"/wd/hub";
+        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost") +"/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
