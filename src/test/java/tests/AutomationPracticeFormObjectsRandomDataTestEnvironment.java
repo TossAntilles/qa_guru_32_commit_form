@@ -6,8 +6,8 @@ import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static io.qameta.allure.Allure.step;
-import static io.qameta.allure.Step.*;
 
 public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends BeforeAll {
 
@@ -20,6 +20,8 @@ public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends Befo
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
     }
 
     String firstName = randData.firstName(),
