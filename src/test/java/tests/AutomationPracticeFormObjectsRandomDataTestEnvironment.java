@@ -1,25 +1,19 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 import utils.RegistrationPageRandomData;
 
 import static io.qameta.allure.Allure.step;
 
-public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends BeforeAll {
+public class AutomationPracticeFormObjectsRandomDataTestEnvironment extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageRandomData randData = new RegistrationPageRandomData();
-
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-    }
 
     String firstName = randData.firstName(),
             lastName = randData.lastName(),
