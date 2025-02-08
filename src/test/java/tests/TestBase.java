@@ -17,17 +17,12 @@ public class TestBase {
     @BeforeAll
     @Step("Подготовка тестового окружения")
     static void beforeAll(){
-        System.setProperty("baseUrl", "https://demoqa.com");
-        System.setProperty("browser", "chrome");
-        System.setProperty("browserResolution", "1920x1080");
-        System.setProperty("webDriverHost", "selenoid.autotests.cloud");
-
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browserSize = System.getProperty("browserResolution");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
 
-        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost") +"/wd/hub";
+        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost", "selenoid.autotests.cloud") +"/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
